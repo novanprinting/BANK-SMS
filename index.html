@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Bank SMS Mobile</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#007bff">
+    <style>
+        :root {
+            --primary-blue: #0095ff;
+            --gradient-bg: linear-gradient(180deg, #ffffff 0%, #00a2ff 100%);
+        }
+
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: var(--gradient-bg);
+            height: 100vh;
+            display: flex; flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .logo-box img { max-height: 50px; }
+        .sub-header { font-size: 11px; color: #333; font-weight: bold; margin-top: 5px; }
+
+        /* Area Konten */
+        .content-container {
+            flex: 1;
+            padding: 15px;
+            display: none;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .active-content { display: block; animation: fadeIn 0.4s ease; }
+
+        @keyframes fadeIn { from {opacity: 0; transform: translateY(10px);} to {opacity: 1; transform: translateY(0);} }
+
+        /* Grid 3 Kolom */
+        .grid-menu {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: 12px;
+            padding: 10px 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.2s ease;
+        }
+        .menu-item:active { transform: scale(0.92); background: #f0f0f0; }
+
+        .menu-item img {
+            width: 80%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            background: #eee;
+        }
+
+        .menu-item span {
+            font-size: 9px;
+            color: #1a237e;
+            font-weight: 800;
+            text-align: center;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+
+        .wbs-note {
+            text-align: center;
+            color: white;
+            font-size: 10px;
+            margin-top: 20px;
+            padding: 10px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        /* Navigasi Bawah */
+        nav {
+            background: #e0e0e0;
+            display: flex;
+            padding: 8px;
+            gap: 4px;
+        }
+        .nav-btn {
+            flex: 1;
+            padding: 12px 2px;
+            border: 1px solid #999;
+            background: #eee;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 10px;
+            color: #333;
+            cursor: pointer;
+        }
+        .nav-btn.active {
+            background: #d32f2f;
+            color: white;
+            border-color: #b71c1c;
+        }
+
+        footer {
+            background: #fff;
+            padding: 8px;
+            font-size: 8px;
+            text-align: center;
+            color: #444;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo-box">
+        <img src="logo bank sms.png" alt="BANK SMS">
+    </div>
+    <div class="sub-header">PT. BPR Sinar Mitra Sejahtera</div>
+</header>
+
+<div id="produk" class="content-container active-content">
+    <div class="grid-menu">
+        <a href="https://wa.me/6287831139726?text=Halo%20BPR%20SMS%2C%20saya%20ingin%20info%20tentang%20KREDIT" class="menu-item">
+            <img src="kredit.jpg" alt="Kredit">
+            <span>KREDIT</span>
+        </a>
+        <a href="https://wa.me/62811272234?text=Halo%20BPR%20SMS%2C%20saya%20ingin%20info%20tentang%20DEPOSITO" class="menu-item">
+            <img src="deposito.jpg" alt="Deposito">
+            <span>DEPOSITO</span>
+        </a>
+        <a href="https://wa.me/62895413180956?text=Halo%20BPR%20SMS%2C%20saya%20ingin%20info%20tentang%20TABUNGAN" class="menu-item">
+            <img src="tabungan.jpg" alt="Tabungan">
+            <span>TABUNGAN</span>
+        </a>
+    </div>
+</div>
+
+<div id="wbs" class="content-container">
+    <div class="grid-menu">
+        <a href="https://wa.me/628122983670?text=Halo%20BPR%20SMS%2C%20Saya%20ingin%20melaporkan%20indikasi%3A%20KORUPSI" class="menu-item"><img src="korupsi.jpg"><span>KORUPSI</span></a>
+        <a href="https://wa.me/628122983670?text=Halo%20BPR%20SMS%2C%20Saya%20ingin%20melaporkan%20indikasi%3A%20KOLUSI" class="menu-item"><img src="kolusi.jpg"><span>KOLUSI</span></a>
+        <a href="https://wa.me/628122983670?text=Halo%20BPR%20SMS%2C%20Saya%20ingin%20melaporkan%20indikasi%3A%20NEPOTISME" class="menu-item"><img src="nepotisme.jpg"><span>NEPOTISME</span></a>
+        <a href="https://wa.me/628122983670?text=Halo%20BPR%20SMS%2C%20Saya%20ingin%20melaporkan%20indikasi%3A%20FRAUD" class="menu-item"><img src="fraud.jpg"><span>FRAUD</span></a>
+        <a href="https://wa.me/628122983670?text=Halo%20BPR%20SMS%2C%20Saya%20ingin%20melaporkan%20indikasi%3A%20ASET" class="menu-item"><img src="aset.jpg"><span>ASET</span></a>
+        <a href="https://wa.me/628122983670?text=Halo%20BPR%20SMS%2C%20Saya%20ingin%20melaporkan%20indikasi%3A%20PENGGELAPAN" class="menu-item"><img src="penggelapan.jpg"><span>PENGGELAPAN</span></a>
+        <a href="https://wa.me/628122983670?text=Halo%20BPR%20SMS%2C%20Saya%20ingin%20melaporkan%20indikasi%3A%20INFO" class="menu-item"><img src="info.jpg"><span>INFO</span></a>
+        <a href="https://wa.me/628122983670?text=Halo%20BPR%20SMS%2C%20Saya%20ingin%20melaporkan%20indikasi%3A%20PENCURIAN" class="menu-item"><img src="pencurian.jpg"><span>PENCURIAN</span></a>
+        <a href="https://wa.me/628122983670?text=Halo%20BPR%20SMS%2C%20Saya%20ingin%20melaporkan%20indikasi%3A%20PEMBIARAN" class="menu-item"><img src="pembiaran.jpg"><span>PEMBIARAN</span></a>
+    </div>
+    <div class="wbs-note">IDENTITAS ANDA SEBAGAI PELAPOR DIJAMIN KERAHASIAANNYA</div>
+</div>
+
+<div id="admin" class="content-container">
+    <div class="grid-menu">
+        <a href="https://wa.me/6281226239220?text=Admin: Halo" class="menu-item"><img src="wa.jpg"><span>WHATSAPP</span></a>
+        <a href="https://maps.app.goo.gl/tu3k6RjqiFrVY8WM8" class="menu-item"><img src="alamat.jpg"><span>ALAMAT</span></a>
+        <a href="https://bprsms.co.id" class="menu-item"><img src="web.jpg"><span>WEBSITE</span></a>
+        <a href="https://instagram.com/bprsms" class="menu-item"><img src="ig.jpg"><span>INSTAGRAM</span></a>
+	<a href="https://youtube.com/@bprsms3518?si=yw18lJE70woKT8ro" class="menu-item"><img src="youtube.jpg"><span>YOUTUBE</span></a>
+        <a href="https://linktr.ee/bprsinarmitrasejahtera" class="menu-item"><img src="linktree.jpg"><span>LINKTREE</span></a>
+    </div>
+</div>
+
+<nav>
+    <button class="nav-btn active" onclick="switchTab('produk', this)">PRODUK</button>
+    <button class="nav-btn" onclick="switchTab('wbs', this)">WHISTLEBLOWING SYSTEM</button>
+    <button class="nav-btn" onclick="switchTab('admin', this)">ADMIN</button>
+</nav>
+
+<footer>
+    PT. BPR Sinar Mitra Sejahtera berizin dan diawasi oleh OJK<br>dan merupakan peserta penjamin LPS.
+</footer>
+
+<script>
+    function switchTab(id, btn) {
+        // Sembunyikan semua konten
+        document.querySelectorAll('.content-container').forEach(c => c.classList.remove('active-content'));
+        // Hapus status active dari semua tombol navigasi
+        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+        
+        // Tampilkan konten yang dipilih
+        document.getElementById(id).classList.add('active-content');
+        // Tambahkan status active pada tombol yang diklik
+        btn.classList.add('active');
+    }
+
+    // Registrasi Service Worker untuk PWA
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js');
+    }
+</script>
+</body>
+</html>

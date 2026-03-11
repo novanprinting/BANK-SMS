@@ -1,0 +1,20 @@
+{
+  "name": "Bank SMS Mobile",
+  "short_name": "BankSMS",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#007bff",
+  "icons": [
+    {
+      "src": "logo bank sms.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "logo bank sms.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
